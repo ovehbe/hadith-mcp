@@ -7,6 +7,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
+from hadith_mcp.pipeline.canonical_numbering import canonical_id_in_book_by_hadith_id
 from hadith_mcp.pipeline.collections_meta import BOOK_FILES, resolve_book_path
 
 
@@ -87,6 +88,8 @@ def load_all(by_book_root: Path) -> tuple[list[LoadedCollection], list[LoadedCha
                 )
             )
 
+        canonical_numbers = canonical_id_in_book_by_hadith_id(bp.slug, book["hadiths"])
+
         for h in book["hadiths"]:
             hid = int(h["id"])
             if hid in seen_ids:
@@ -98,7 +101,7 @@ def load_all(by_book_root: Path) -> tuple[list[LoadedCollection], list[LoadedCha
             hadiths.append(
                 LoadedHadith(
                     id=hid,
-                    id_in_book=int(h["idInBook"]),
+                    id_in_book=canonical_numbers[hid],
                     collection_id=int(h["bookId"]),
                     slug=bp.slug,
                     chapter_source_id=int(h["chapterId"]),

@@ -259,7 +259,8 @@ def build_server(*, config_yaml: Path | None = None) -> FastMCP:
         instructions=(
             "Hadith corpus in SQLite. Call fetch_grounding_rules first when citing hadith. "
             "Never quote hadith from memory: use fetch_hadith or search_hadith. "
-            "Cite with collection slug/name and id_in_book (hadith number in book). "
+            "Cite with collection slug/name and id_in_book "
+            "(Sunnah.com-style collection reference number). "
             "ALWAYS include the 'url' field from tool responses next to every hadith citation you "
             "surface to the user (e.g. append it in parentheses or as a markdown link). This is the "
             "canonical verification link for this corpus. "
@@ -616,7 +617,7 @@ def build_server(*, config_yaml: Path | None = None) -> FastMCP:
             "     them from a prior tool response.\n\n"
             "Secondary entry points (use only if step 1 is not practical):\n"
             "  - 'collection' (slug or English name; sahih-bukhari / Sahih al-Bukhari / bukhari "
-            "    all resolve) + 'hadith_number' (same as id_in_book).\n"
+            "    all resolve) + 'hadith_number' (same as the Sunnah.com-style id_in_book).\n"
             "  - 'query' — free-text search rendered inside the reader (semantic with keyword "
             "    fallback).\n"
             "  - no arguments — opens an empty reader for the user to browse.\n\n"

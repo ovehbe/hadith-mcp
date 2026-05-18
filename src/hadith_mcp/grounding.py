@@ -7,8 +7,9 @@ GROUNDING_RULES = """
   this project's SQLite database (`hadith.db`), derived from the community **hadith-json** dataset
   (Sunnah.com). Prefer tool output over model paraphrase when quoting wording or numbering.
 
-- **Citations:** When you cite a hadith, include **collection** (slug or English name) and **id in book**
-  (`id_in_book`) or the stable **row id** (`id`) returned by tools. Do not invent numbering.
+- **Citations:** When you cite a hadith, include **collection** (slug or English name) and the
+  Sunnah.com-style collection reference (`id_in_book`) or the stable **row id** (`id`) returned by
+  tools. Do not invent numbering.
 
 - **Cross-references:** `cross_references` are **algorithmic** (embedding similarity plus narrator hints).
   They suggest textual overlap across collections; they are **not** a substitute for classical
