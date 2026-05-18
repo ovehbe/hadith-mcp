@@ -196,6 +196,7 @@ class HadithStore:
             SELECT h.id FROM hadiths h
             JOIN collections c ON c.id = h.collection_id
             WHERE c.slug = ? COLLATE NOCASE AND h.id_in_book = ?
+            ORDER BY h.id
             """,
             (collection_slug.strip(), id_in_book),
         ).fetchone()
@@ -279,6 +280,7 @@ class HadithStore:
                 JOIN collections c ON c.id = h.collection_id
                 LEFT JOIN chapters ch ON ch.id = h.chapter_id
                 WHERE c.slug = ? AND h.id_in_book = ?
+                ORDER BY h.id
                 """,
                 (collection_slug.strip(), id_in_book),
             )
